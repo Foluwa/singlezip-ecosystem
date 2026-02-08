@@ -1,9 +1,17 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const BookingConfirmedView: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { selectedDate, selectedTime } = location.state || {};
+
+  const formatDate = (date: Date | null) => {
+    if (!date) return 'Not selected';
+    const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-white dark:bg-background-dark text-center">
        <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-8 relative">
@@ -17,7 +25,7 @@ const BookingConfirmedView: React.FC = () => {
        <div className="w-full max-w-sm bg-slate-50 dark:bg-slate-800/50 rounded-3xl p-6 space-y-4 mb-12 border border-slate-100 dark:border-slate-700">
           <div className="flex items-center gap-4">
              <div className="size-10 bg-primary rounded-xl flex items-center justify-center text-white"><span className="material-symbols-outlined text-lg">calendar_today</span></div>
-             <div className="text-left"><p className="text-[10px] font-black text-primary uppercase tracking-widest">Date & Time</p><p className="font-bold text-sm">Oct 24, 2:00 PM</p></div>
+             <div className="text-left"><p className="text-[10px] font-black text-primary uppercase tracking-widest">Date & Time</p><p className="font-bold text-sm">{formatDate(selectedDate)}, {selectedTime || 'Not selected'}</p></div>
           </div>
           <div className="flex items-center gap-4">
              <div className="size-10 bg-primary rounded-xl flex items-center justify-center text-white"><span className="material-symbols-outlined text-lg">location_on</span></div>
