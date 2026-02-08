@@ -23,7 +23,7 @@ const LandingView: React.FC = () => {
               Single<span className="text-primary">Zip</span>
             </h2>
           </div>
-          <button className="text-sm font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800">Log In</button>
+          <button onClick={() => navigate('/login')} className="text-sm font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800">Log In</button>
         </header>
 
         <main className="flex flex-col gap-6 sm:gap-8 max-w-sm">

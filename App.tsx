@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import LandingView from './views/LandingView';
+import LoginView from './views/LoginView';
 import OnboardingStep1 from './views/OnboardingStep1';
 import OnboardingStep2 from './views/OnboardingStep2';
 import DashboardView from './views/DashboardView';
@@ -39,7 +40,7 @@ const AppContent: React.FC = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  const showNav = !['/', '/onboarding/step1', '/onboarding/step2', '/booking', '/booking/confirmed', '/privacy', '/terms'].includes(location.pathname);
+  const showNav = !['/', '/login', '/onboarding/step1', '/onboarding/step2', '/booking', '/booking/confirmed', '/privacy', '/terms'].includes(location.pathname);
 
   const handleEcosystemNavigate = (path: string) => {
     navigate(path);
@@ -57,6 +58,7 @@ const AppContent: React.FC = () => {
       <div className="flex-1 flex flex-col relative w-full overflow-x-hidden">
         <Routes>
           <Route path="/" element={<LandingView />} />
+          <Route path="/login" element={<LoginView />} />
           <Route path="/onboarding/step1" element={<OnboardingStep1 />} />
           <Route path="/onboarding/step2" element={<OnboardingStep2 />} />
           <Route path="/dashboard" element={<DashboardView />} />
